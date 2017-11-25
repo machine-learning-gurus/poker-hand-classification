@@ -1,4 +1,4 @@
-function LDA = lda(X, y)
+function LDA = lda(X, y, X_test, y_test)
 
 % Total amount of data vectors
 N = size(X);
@@ -77,24 +77,26 @@ pooled_covariance = ...
   (n9 * c9_covariance)) / ...
   (n0 + n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9);
 
+% Test the data
 
 % Computing the "guesses" based on the discriminants
 % This is what you had -- I haven't changed anything here besides some variable names
 % src: http://chrome.ws.dei.polimi.it/images/5/5b/PAMI_homework_2012_2.pdf (pg. 4-5)
 sigmaInv = inv(pooled_covariance);
-discriminant_0 = X*sigmaInv*c0_mu' - 0.5*c0_mu*sigmaInv*c0_mu' + log(c0_prior);
-discriminant_1 = X*sigmaInv*c1_mu' - 0.5*c1_mu*sigmaInv*c1_mu' + log(c1_prior);
-discriminant_2 = X*sigmaInv*c2_mu' - 0.5*c2_mu*sigmaInv*c2_mu' + log(c2_prior);
-discriminant_3 = X*sigmaInv*c3_mu' - 0.5*c3_mu*sigmaInv*c3_mu' + log(c3_prior);
-discriminant_4 = X*sigmaInv*c4_mu' - 0.5*c4_mu*sigmaInv*c4_mu' + log(c4_prior);
-discriminant_5 = X*sigmaInv*c5_mu' - 0.5*c5_mu*sigmaInv*c5_mu' + log(c5_prior);
-discriminant_6 = X*sigmaInv*c6_mu' - 0.5*c6_mu*sigmaInv*c6_mu' + log(c6_prior);
-discriminant_7 = X*sigmaInv*c7_mu' - 0.5*c7_mu*sigmaInv*c7_mu' + log(c7_prior);
-discriminant_8 = X*sigmaInv*c8_mu' - 0.5*c8_mu*sigmaInv*c8_mu' + log(c8_prior);
-discriminant_9 = X*sigmaInv*c9_mu' - 0.5*c9_mu*sigmaInv*c9_mu' + log(c9_prior);
+phi = X_test * sigmaInv;
+discriminant_0 = phi * c0_mu' - 0.5 * c0_mu * sigmaInv * c0_mu' + log(c0_prior);
+discriminant_1 = phi * c1_mu' - 0.5 * c1_mu * sigmaInv * c1_mu' + log(c1_prior);
+discriminant_2 = phi * c2_mu' - 0.5 * c2_mu * sigmaInv * c2_mu' + log(c2_prior);
+discriminant_3 = phi * c3_mu' - 0.5 * c3_mu * sigmaInv * c3_mu' + log(c3_prior);
+discriminant_4 = phi * c4_mu' - 0.5 * c4_mu * sigmaInv * c4_mu' + log(c4_prior);
+discriminant_5 = phi * c5_mu' - 0.5 * c5_mu * sigmaInv * c5_mu' + log(c5_prior);
+discriminant_6 = phi * c6_mu' - 0.5 * c6_mu * sigmaInv * c6_mu' + log(c6_prior);
+discriminant_7 = phi * c7_mu' - 0.5 * c7_mu * sigmaInv * c7_mu' + log(c7_prior);
+discriminant_8 = phi * c8_mu' - 0.5 * c8_mu * sigmaInv * c8_mu' + log(c8_prior);
+discriminant_9 = phi * c9_mu' - 0.5 * c9_mu * sigmaInv * c9_mu' + log(c9_prior);
 
 Yout = [];
-for i=1:size(X)
+for i=1:size(X_test)
   discrims = [discriminant_0(i); discriminant_1(i); discriminant_2(i); discriminant_3(i); discriminant_4(i); discriminant_5(i); discriminant_6(i); discriminant_7(i); discriminant_8(i); discriminant_9(i)];
   maxVal = max(discrims);
   switch maxVal
@@ -121,9 +123,9 @@ for i=1:size(X)
   end;
 end;  
 
-accuracy = [y == Yout];
+accuracy = [y_test == Yout];
 correct = size(find(accuracy == 1));
-finalPercentage = correct / size(X);
+finalPercentage = correct / size(X_test);
 accuracy_percent = finalPercentage * 100;
 disp(['Accuracy of model: ', num2str(accuracy_percent), '%']);
 
