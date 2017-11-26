@@ -83,17 +83,18 @@ pooled_covariance = ...
 % This is what you had -- I haven't changed anything here besides some variable names
 % src: http://chrome.ws.dei.polimi.it/images/5/5b/PAMI_homework_2012_2.pdf (pg. 4-5)
 sigmaInv = inv(pooled_covariance);
-phi = X_test * sigmaInv;
-discriminant_0 = phi * c0_mu' - 0.5 * c0_mu * sigmaInv * c0_mu' + log(c0_prior);
-discriminant_1 = phi * c1_mu' - 0.5 * c1_mu * sigmaInv * c1_mu' + log(c1_prior);
-discriminant_2 = phi * c2_mu' - 0.5 * c2_mu * sigmaInv * c2_mu' + log(c2_prior);
-discriminant_3 = phi * c3_mu' - 0.5 * c3_mu * sigmaInv * c3_mu' + log(c3_prior);
-discriminant_4 = phi * c4_mu' - 0.5 * c4_mu * sigmaInv * c4_mu' + log(c4_prior);
-discriminant_5 = phi * c5_mu' - 0.5 * c5_mu * sigmaInv * c5_mu' + log(c5_prior);
-discriminant_6 = phi * c6_mu' - 0.5 * c6_mu * sigmaInv * c6_mu' + log(c6_prior);
-discriminant_7 = phi * c7_mu' - 0.5 * c7_mu * sigmaInv * c7_mu' + log(c7_prior);
-discriminant_8 = phi * c8_mu' - 0.5 * c8_mu * sigmaInv * c8_mu' + log(c8_prior);
-discriminant_9 = phi * c9_mu' - 0.5 * c9_mu * sigmaInv * c9_mu' + log(c9_prior);
+constant = X_test * sigmaInv;
+
+discriminant_0 = log(c0_prior) - (0.5 * (c0_mu * sigmaInv * c0_mu')) + constant * c0_mu';
+discriminant_1 = log(c1_prior) - (0.5 * (c1_mu * sigmaInv * c1_mu')) + constant * c1_mu';
+discriminant_2 = log(c2_prior) - (0.5 * (c2_mu * sigmaInv * c2_mu')) + constant * c2_mu';
+discriminant_3 = log(c3_prior) - (0.5 * (c3_mu * sigmaInv * c3_mu')) + constant * c3_mu';
+discriminant_4 = log(c4_prior) - (0.5 * (c4_mu * sigmaInv * c4_mu')) + constant * c4_mu';
+discriminant_5 = log(c5_prior) - (0.5 * (c5_mu * sigmaInv * c5_mu')) + constant * c5_mu';
+discriminant_6 = log(c6_prior) - (0.5 * (c6_mu * sigmaInv * c6_mu')) + constant * c6_mu';
+discriminant_7 = log(c7_prior) - (0.5 * (c7_mu * sigmaInv * c7_mu')) + constant * c7_mu';
+discriminant_8 = log(c8_prior) - (0.5 * (c8_mu * sigmaInv * c8_mu')) + constant * c8_mu';
+discriminant_9 = log(c9_prior) - (0.5 * (c9_mu * sigmaInv * c9_mu')) + constant * c9_mu';
 
 Yout = [];
 for i=1:size(X_test)
@@ -127,7 +128,7 @@ accuracy = [y_test == Yout];
 correct = size(find(accuracy == 1));
 finalPercentage = correct / size(X_test);
 accuracy_percent = finalPercentage * 100;
-disp(['Accuracy of model: ', num2str(accuracy_percent), '%']);
+disp(['Accuracy of LDA model: ', num2str(accuracy_percent), '%']);
 
 
 end
