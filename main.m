@@ -13,3 +13,5 @@ tic;
 timerVal = tic;
 lda(X, y, X_test, y_test);
 toc;
+
+% plotGaussian(X, y, X_test, y_test);

@@ -78,9 +78,7 @@ pooled_covariance = ...
   (n0 + n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9);
 
 % Test the data
-
 % Computing the "guesses" based on the discriminants
-% This is what you had -- I haven't changed anything here besides some variable names
 % src: http://chrome.ws.dei.polimi.it/images/5/5b/PAMI_homework_2012_2.pdf (pg. 4-5)
 sigmaInv = inv(pooled_covariance);
 constant = X_test * sigmaInv;
