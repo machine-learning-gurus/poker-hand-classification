@@ -9,9 +9,13 @@ y_test = test_data(:,end);
 X_test = test_data(:,1:end-1);
 
 % LDA
+%tic;
+%timerVal = tic;
+%lda(X, y, X_test, y_test);
+%toc;
 tic;
 timerVal = tic;
-lda(X, y, X_test, y_test);
+qda(X, y, X_test, y_test);
 toc;
 
 % plotGaussian(X, y, X_test, y_test);
