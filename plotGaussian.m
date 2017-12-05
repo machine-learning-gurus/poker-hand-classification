@@ -129,7 +129,7 @@ hold off
 title('Distribution of 3rd Card in Hand Value within a Poker Hand');
 xlabel('Value from 3rd Card in Hand');
 ylabel('Frequency of Cards');
-legend('Invalid Hand', 'One Pair', 'Two Pair', 'Three of a Kind', 'Straight', 'Full House', 'Four of a Kind', 'Straight Flush', 'Royal Flush');
+legend('High Card', 'One Pair', 'Two Pair', 'Three of a Kind', 'Straight', 'Full House', 'Four of a Kind', 'Straight Flush', 'Royal Flush');
 xlim([1 13]);
 legend('Location', 'northeastoutside');
 legend boxoff;
