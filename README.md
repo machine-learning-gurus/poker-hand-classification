@@ -1,6 +1,6 @@
 # poker-hand-classification
 
-> Classification of poker hands using Naive Bayes Classifier and Fisher Linear Discriminant Analysis Models
+> Classification of poker hands using Linear Discriminant Analysis Classifier Models
 
 # Usage
 
