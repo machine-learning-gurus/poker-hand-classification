@@ -4,18 +4,18 @@ data = dlmread("data/poker-hand-training-true.data",",");
 y = data(:,end);
 X = data(:,1:end-1);
 
-test_data = dlmread("data/poker-hand-testing.data",",");
+test_data = dlmread("data/poker-hand-training-true.data",",");% dlmread("data/poker-hand-testing.data",",");
 y_test = test_data(:,end);
 X_test = test_data(:,1:end-1);
 
 % LDA
-%tic;
-%timerVal = tic;
-%lda(X, y, X_test, y_test);
-%toc;
 tic;
 timerVal = tic;
-qda(X, y, X_test, y_test);
+lda(X, y, X_test, y_test);
 toc;
+% tic;
+% timerVal = tic;
+% qda(X, y, X_test, y_test);
+% toc;
 
 % plotGaussian(X, y, X_test, y_test);

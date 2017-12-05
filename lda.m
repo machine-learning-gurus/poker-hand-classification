@@ -28,16 +28,16 @@ c8_mu = mean(c8);
 c9_mu = mean(c9);
 
 % Probabilities of classes (also referred to as the prior)
-c0_prior = size(c0) / N;
-c1_prior = size(c1) / N;
-c2_prior = size(c1) / N;
-c3_prior = size(c3) / N;
-c4_prior = size(c4) / N;
-c5_prior = size(c5) / N;
-c6_prior = size(c6) / N;
-c7_prior = size(c7) / N;
-c8_prior = size(c8) / N;
-c9_prior = size(c9) / N;
+c0_prior = (size(c0) / N) * (1 - .501177);
+c1_prior = (size(c1) / N) * (1 - .422569);
+c2_prior = (size(c1) / N) * (1 - .047539);
+c3_prior = (size(c3) / N) * (1 - .021128);
+c4_prior = (size(c4) / N) * (1 - .003925);
+c5_prior = (size(c5) / N) * (1 - .001965);
+c6_prior = (size(c6) / N) * (1 - .001441);
+c7_prior = (size(c7) / N) * (1 - .000240);
+c8_prior = (size(c8) / N) * (1 - .0000139);
+c9_prior = (size(c9) / N) * (1 - .00000154);
 
 % Compute the covariance of each class matrix independently
 c0_covariance = cov(c0);
@@ -94,6 +94,23 @@ discriminant_7 = log(c7_prior) - (0.5 * (c7_mu * sigmaInv * c7_mu')) + constant 
 discriminant_8 = log(c8_prior) - (0.5 * (c8_mu * sigmaInv * c8_mu')) + constant * c8_mu';
 discriminant_9 = log(c9_prior) - (0.5 * (c9_mu * sigmaInv * c9_mu')) + constant * c9_mu';
 
+discriminant_0_vs_1 = log(c0_prior / c1_prior) - (0.5 * ((c0_mu + c1_mu) * sigmaInv * (c0_mu - c1_mu)')) + constant * (c0_mu - c1_mu)';
+discriminant_1_vs_0 = log(c1_prior / c0_prior) - (0.5 * ((c1_mu + c0_mu) * sigmaInv * (c1_mu - c0_mu)')) + constant * (c1_mu - c0_mu)';
+
+counts = zeros(1, 10);
+
+vs_counts = zeros(1, 10);
+for i=1:size(X_test)
+  vs_discrims = [discriminant_0_vs_1(i); discriminant_1_vs_0(i)];
+  vs_maxVal = max(vs_discrims);
+  switch vs_maxVal
+    case discriminant_0_vs_1(i)
+      vs_counts(1) = vs_counts(1) + 1;
+    case discriminant_1_vs_0(i)
+      vs_counts(2) = vs_counts(2) + 1;
+  end;
+end
+
 Yout = [];
 for i=1:size(X_test)
   discrims = [discriminant_0(i); discriminant_1(i); discriminant_2(i); discriminant_3(i); discriminant_4(i); discriminant_5(i); discriminant_6(i); discriminant_7(i); discriminant_8(i); discriminant_9(i)];
@@ -101,26 +118,39 @@ for i=1:size(X_test)
   switch maxVal
     case discriminant_0(i)
       Yout = [Yout;0];
+      counts(1) = counts(1) + 1;
     case discriminant_1(i)
       Yout = [Yout;1];
+      counts(2) = counts(2) + 1;
     case discriminant_2(i)
       Yout = [Yout;2];
+      counts(3) = counts(3) + 1;
     case discriminant_3(i)
       Yout = [Yout;3];
+      counts(4) = counts(4) + 1;
     case discriminant_4(i)
       Yout = [Yout;4];
+      counts(5) = counts(5) + 1;
     case discriminant_5(i)
       Yout = [Yout;5];
+      counts(6) = counts(6) + 1;
     case discriminant_6(i)
       Yout = [Yout;6];
+      counts(7) = counts(7) + 1;
     case discriminant_7(i)
       Yout = [Yout;7];
+      counts(8) = counts(8) + 1;
     case discriminant_8(i)
       Yout = [Yout;8];
+      counts(9) = counts(9) + 1;
     case discriminant_9(i)
       Yout = [Yout;9];
+      counts(10) = counts(10) + 1;
   end;
-end;  
+end;
+
+counts
+vs_counts
 
 accuracy = [y_test == Yout];
 correct = size(find(accuracy == 1));
