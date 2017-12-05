@@ -95,8 +95,64 @@ discriminant_8 = log(c8_prior) - (0.5 * (c8_mu * sigmaInv * c8_mu')) + constant 
 discriminant_9 = log(c9_prior) - (0.5 * (c9_mu * sigmaInv * c9_mu')) + constant * c9_mu';
 
 discriminant_0_vs_1 = log(c0_prior / c1_prior) - (0.5 * ((c0_mu + c1_mu) * sigmaInv * (c0_mu - c1_mu)')) + constant * (c0_mu - c1_mu)';
-discriminant_1_vs_0 = log(c1_prior / c0_prior) - (0.5 * ((c1_mu + c0_mu) * sigmaInv * (c1_mu - c0_mu)')) + constant * (c1_mu - c0_mu)';
+discriminant_0_vs_2 = log(c0_prior / c2_prior) - (0.5 * ((c0_mu + c2_mu) * sigmaInv * (c0_mu - c2_mu)')) + constant * (c0_mu - c2_mu)';
+discriminant_0_vs_3 = log(c0_prior / c3_prior) - (0.5 * ((c0_mu + c3_mu) * sigmaInv * (c0_mu - c3_mu)')) + constant * (c0_mu - c3_mu)';
+discriminant_0_vs_4 = log(c0_prior / c4_prior) - (0.5 * ((c0_mu + c4_mu) * sigmaInv * (c0_mu - c4_mu)')) + constant * (c0_mu - c4_mu)';
+discriminant_0_vs_5 = log(c0_prior / c5_prior) - (0.5 * ((c0_mu + c5_mu) * sigmaInv * (c0_mu - c5_mu)')) + constant * (c0_mu - c5_mu)';
+discriminant_0_vs_6 = log(c0_prior / c6_prior) - (0.5 * ((c0_mu + c6_mu) * sigmaInv * (c0_mu - c6_mu)')) + constant * (c0_mu - c6_mu)';
+discriminant_0_vs_7 = log(c0_prior / c7_prior) - (0.5 * ((c0_mu + c7_mu) * sigmaInv * (c0_mu - c7_mu)')) + constant * (c0_mu - c7_mu)';
+discriminant_0_vs_8 = log(c0_prior / c8_prior) - (0.5 * ((c0_mu + c8_mu) * sigmaInv * (c0_mu - c8_mu)')) + constant * (c0_mu - c8_mu)';
+discriminant_0_vs_9 = log(c0_prior / c9_prior) - (0.5 * ((c0_mu + c9_mu) * sigmaInv * (c0_mu - c9_mu)')) + constant * (c0_mu - c9_mu)';
 
+discriminant_1_vs_0 = log(c1_prior / c0_prior) - (0.5 * ((c1_mu + c0_mu) * sigmaInv * (c1_mu - c0_mu)')) + constant * (c1_mu - c0_mu)';
+discriminant_1_vs_2 = log(c1_prior / c2_prior) - (0.5 * ((c1_mu + c2_mu) * sigmaInv * (c1_mu - c2_mu)')) + constant * (c1_mu - c2_mu)';
+discriminant_1_vs_3 = log(c1_prior / c3_prior) - (0.5 * ((c1_mu + c3_mu) * sigmaInv * (c1_mu - c3_mu)')) + constant * (c1_mu - c3_mu)';
+discriminant_1_vs_4 = log(c1_prior / c4_prior) - (0.5 * ((c1_mu + c4_mu) * sigmaInv * (c1_mu - c4_mu)')) + constant * (c1_mu - c4_mu)';
+discriminant_1_vs_5 = log(c1_prior / c5_prior) - (0.5 * ((c1_mu + c5_mu) * sigmaInv * (c1_mu - c5_mu)')) + constant * (c1_mu - c5_mu)';
+discriminant_1_vs_6 = log(c1_prior / c6_prior) - (0.5 * ((c1_mu + c6_mu) * sigmaInv * (c1_mu - c6_mu)')) + constant * (c1_mu - c6_mu)';
+discriminant_1_vs_7 = log(c1_prior / c7_prior) - (0.5 * ((c1_mu + c7_mu) * sigmaInv * (c1_mu - c7_mu)')) + constant * (c1_mu - c7_mu)';
+discriminant_1_vs_8 = log(c1_prior / c8_prior) - (0.5 * ((c1_mu + c8_mu) * sigmaInv * (c1_mu - c8_mu)')) + constant * (c1_mu - c8_mu)';
+discriminant_1_vs_9 = log(c1_prior / c9_prior) - (0.5 * ((c1_mu + c9_mu) * sigmaInv * (c1_mu - c9_mu)')) + constant * (c1_mu - c9_mu)';
+
+discriminant_2_vs_0 = log(c2_prior / c0_prior) - (0.5 * ((c2_mu + c0_mu) * sigmaInv * (c2_mu - c0_mu)')) + constant * (c2_mu - c0_mu)';
+discriminant_2_vs_1 = log(c2_prior / c1_prior) - (0.5 * ((c2_mu + c1_mu) * sigmaInv * (c2_mu - c1_mu)')) + constant * (c2_mu - c1_mu)';
+discriminant_2_vs_3 = log(c2_prior / c3_prior) - (0.5 * ((c2_mu + c3_mu) * sigmaInv * (c2_mu - c3_mu)')) + constant * (c2_mu - c3_mu)';
+discriminant_2_vs_4 = log(c2_prior / c4_prior) - (0.5 * ((c2_mu + c4_mu) * sigmaInv * (c2_mu - c4_mu)')) + constant * (c2_mu - c4_mu)';
+discriminant_2_vs_5 = log(c2_prior / c5_prior) - (0.5 * ((c2_mu + c5_mu) * sigmaInv * (c2_mu - c5_mu)')) + constant * (c2_mu - c5_mu)';
+discriminant_2_vs_6 = log(c2_prior / c6_prior) - (0.5 * ((c2_mu + c6_mu) * sigmaInv * (c2_mu - c6_mu)')) + constant * (c2_mu - c6_mu)';
+discriminant_2_vs_7 = log(c2_prior / c7_prior) - (0.5 * ((c2_mu + c7_mu) * sigmaInv * (c2_mu - c7_mu)')) + constant * (c2_mu - c7_mu)';
+discriminant_2_vs_8 = log(c2_prior / c8_prior) - (0.5 * ((c2_mu + c8_mu) * sigmaInv * (c2_mu - c8_mu)')) + constant * (c2_mu - c8_mu)';
+discriminant_2_vs_9 = log(c2_prior / c9_prior) - (0.5 * ((c2_mu + c9_mu) * sigmaInv * (c2_mu - c9_mu)')) + constant * (c2_mu - c9_mu)';
+
+discriminant_3_vs_0 = log(c3_prior / c0_prior) - (0.5 * ((c3_mu + c0_mu) * sigmaInv * (c3_mu - c0_mu)')) + constant * (c3_mu - c0_mu)';
+discriminant_3_vs_1 = log(c3_prior / c1_prior) - (0.5 * ((c3_mu + c1_mu) * sigmaInv * (c3_mu - c1_mu)')) + constant * (c3_mu - c1_mu)';
+discriminant_3_vs_2 = log(c3_prior / c2_prior) - (0.5 * ((c3_mu + c2_mu) * sigmaInv * (c3_mu - c2_mu)')) + constant * (c3_mu - c2_mu)';
+discriminant_3_vs_4 = log(c3_prior / c4_prior) - (0.5 * ((c3_mu + c4_mu) * sigmaInv * (c3_mu - c4_mu)')) + constant * (c3_mu - c4_mu)';
+discriminant_3_vs_5 = log(c3_prior / c5_prior) - (0.5 * ((c3_mu + c5_mu) * sigmaInv * (c3_mu - c5_mu)')) + constant * (c3_mu - c5_mu)';
+discriminant_3_vs_6 = log(c3_prior / c6_prior) - (0.5 * ((c3_mu + c6_mu) * sigmaInv * (c3_mu - c6_mu)')) + constant * (c3_mu - c6_mu)';
+discriminant_3_vs_7 = log(c3_prior / c7_prior) - (0.5 * ((c3_mu + c7_mu) * sigmaInv * (c3_mu - c7_mu)')) + constant * (c3_mu - c7_mu)';
+discriminant_3_vs_8 = log(c3_prior / c8_prior) - (0.5 * ((c3_mu + c8_mu) * sigmaInv * (c3_mu - c8_mu)')) + constant * (c3_mu - c8_mu)';
+discriminant_3_vs_9 = log(c3_prior / c9_prior) - (0.5 * ((c3_mu + c9_mu) * sigmaInv * (c3_mu - c9_mu)')) + constant * (c3_mu - c9_mu)';
+
+discriminant_4_vs_0 = log(c4_prior / c0_prior) - (0.5 * ((c4_mu + c0_mu) * sigmaInv * (c4_mu - c0_mu)')) + constant * (c4_mu - c0_mu)';
+discriminant_4_vs_1 = log(c4_prior / c1_prior) - (0.5 * ((c4_mu + c1_mu) * sigmaInv * (c4_mu - c1_mu)')) + constant * (c4_mu - c1_mu)';
+discriminant_4_vs_2 = log(c4_prior / c2_prior) - (0.5 * ((c4_mu + c2_mu) * sigmaInv * (c4_mu - c2_mu)')) + constant * (c4_mu - c2_mu)';
+discriminant_4_vs_3 = log(c4_prior / c3_prior) - (0.5 * ((c4_mu + c3_mu) * sigmaInv * (c4_mu - c3_mu)')) + constant * (c4_mu - c3_mu)';
+discriminant_4_vs_5 = log(c4_prior / c5_prior) - (0.5 * ((c4_mu + c5_mu) * sigmaInv * (c4_mu - c5_mu)')) + constant * (c4_mu - c5_mu)';
+discriminant_4_vs_6 = log(c4_prior / c6_prior) - (0.5 * ((c4_mu + c6_mu) * sigmaInv * (c4_mu - c6_mu)')) + constant * (c4_mu - c6_mu)';
+discriminant_4_vs_7 = log(c4_prior / c7_prior) - (0.5 * ((c4_mu + c7_mu) * sigmaInv * (c4_mu - c7_mu)')) + constant * (c4_mu - c7_mu)';
+discriminant_4_vs_8 = log(c4_prior / c8_prior) - (0.5 * ((c4_mu + c8_mu) * sigmaInv * (c4_mu - c8_mu)')) + constant * (c4_mu - c8_mu)';
+discriminant_4_vs_9 = log(c4_prior / c9_prior) - (0.5 * ((c4_mu + c9_mu) * sigmaInv * (c4_mu - c9_mu)')) + constant * (c4_mu - c9_mu)';
+
+discriminant_5_vs_0 = log(c5_prior / c0_prior) - (0.5 * ((c5_mu + c0_mu) * sigmaInv * (c5_mu - c0_mu)')) + constant * (c5_mu - c0_mu)';
+discriminant_5_vs_1 = log(c5_prior / c1_prior) - (0.5 * ((c5_mu + c1_mu) * sigmaInv * (c5_mu - c1_mu)')) + constant * (c5_mu - c1_mu)';
+discriminant_5_vs_2 = log(c5_prior / c2_prior) - (0.5 * ((c5_mu + c2_mu) * sigmaInv * (c5_mu - c2_mu)')) + constant * (c5_mu - c2_mu)';
+discriminant_5_vs_3 = log(c5_prior / c3_prior) - (0.5 * ((c5_mu + c3_mu) * sigmaInv * (c5_mu - c3_mu)')) + constant * (c5_mu - c3_mu)';
+discriminant_5_vs_4 = log(c5_prior / c4_prior) - (0.5 * ((c5_mu + c4_mu) * sigmaInv * (c5_mu - c4_mu)')) + constant * (c5_mu - c4_mu)';
+discriminant_5_vs_6 = log(c5_prior / c6_prior) - (0.5 * ((c5_mu + c6_mu) * sigmaInv * (c5_mu - c6_mu)')) + constant * (c5_mu - c6_mu)';
+discriminant_5_vs_7 = log(c5_prior / c7_prior) - (0.5 * ((c5_mu + c7_mu) * sigmaInv * (c5_mu - c7_mu)')) + constant * (c5_mu - c7_mu)';
+discriminant_5_vs_8 = log(c5_prior / c8_prior) - (0.5 * ((c5_mu + c8_mu) * sigmaInv * (c5_mu - c8_mu)')) + constant * (c5_mu - c8_mu)';
+discriminant_5_vs_9 = log(c5_prior / c9_prior) - (0.5 * ((c5_mu + c9_mu) * sigmaInv * (c5_mu - c9_mu)')) + constant * (c5_mu - c9_mu)';
 
 discriminant_6_vs_0 = log(c6_prior / c0_prior) - (0.5 * ((c6_mu + c0_mu) * sigmaInv * (c6_mu - c0_mu)')) + constant * (c6_mu - c0_mu)';
 discriminant_6_vs_1 = log(c6_prior / c1_prior) - (0.5 * ((c6_mu + c1_mu) * sigmaInv * (c6_mu - c1_mu)')) + constant * (c6_mu - c1_mu)';
@@ -138,16 +194,9 @@ discriminant_9_vs_6 = log(c9_prior / c6_prior) - (0.5 * ((c9_mu + c6_mu) * sigma
 discriminant_9_vs_7 = log(c9_prior / c7_prior) - (0.5 * ((c9_mu + c7_mu) * sigmaInv * (c9_mu - c7_mu)')) + constant * (c9_mu - c7_mu)';
 discriminant_9_vs_8 = log(c9_prior / c8_prior) - (0.5 * ((c9_mu + c8_mu) * sigmaInv * (c9_mu - c8_mu)')) + constant * (c9_mu - c8_mu)';
 
-
-
-
-
-
-
-
 counts = zeros(1, 10);
-
 vs_counts = zeros(1, 10);
+
 for i=1:size(X_test)
   vs_discrims = [discriminant_0_vs_1(i); discriminant_1_vs_0(i)];
   vs_maxVal = max(vs_discrims);
