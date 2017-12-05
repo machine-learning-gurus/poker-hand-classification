@@ -20,7 +20,7 @@ X = data(:,2:end);
 y_test = data(:,1);
 X_test = data(:,2:end);
 
-% LDA
+% Wine LDA
 tic;
 timerVal = tic;
 lda_wine(X, y, X_test, y_test);
@@ -31,4 +31,5 @@ toc;
 % qda(X, y, X_test, y_test);
 % toc;
 
-% plotGaussian(X, y, X_test, y_test);
+% plotGaussian(X, y;
+plotWine(X, y);

@@ -1,4 +1,4 @@
-function PlotGaussianData = plotGaussian(X, y, X_test, y_test)
+function PlotGaussianData = plotGaussian(X, y)
 
 % Total amount of data vectors
 N = size(X);
