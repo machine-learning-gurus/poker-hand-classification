@@ -21,15 +21,15 @@ y_test_wine = data(:,1);
 X_test_wine = data(:,2:end);
 
 % Wine LDA
-tic;
-timerVal = tic;
-lda_wine(X_wine, y_wine, X_test_wine, y_test_wine);
-toc;
+% tic;
+% timerVal = tic;
+% lda_wine(X_wine, y_wine, X_test_wine, y_test_wine);
+% toc;
 
 % tic;
 % timerVal = tic;
 % qda(X, y, X_test, y_test);
 % toc;
 
-plotPokerHands(X, y);
-plotWine(X_wine, y_wine);
+% plotPokerHands(X, y);
+% plotWine(X_wine, y_wine);

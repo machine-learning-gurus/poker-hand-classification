@@ -66,13 +66,13 @@ for i=1:size(X_test)
   end;
 end;
 
-counts
+counts;
 
 accuracy = [y_test == Yout];
 correct = size(find(accuracy == 1));
 finalPercentage = correct / size(X_test);
 accuracy_percent = finalPercentage * 100;
-disp(['Accuracy of LDA model: ', num2str(accuracy_percent), '%']);
+disp(['[WINE] Accuracy of LDA model: ', num2str(accuracy_percent), '%']);
 
 
 end

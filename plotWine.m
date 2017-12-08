@@ -10,11 +10,11 @@ c2 = X(find(y==2), :);
 c3 = X(find(y==3), :);
 
 for i=1:dimension
-  histogram(c1(:,i), 'FaceAlpha', 0.5, 'FaceColor', 'r');
+  histogram(c1(:,i), 'FaceAlpha', 0.5, 'FaceColor', 'r', 'EdgeColor', 'none');
   hold on
-  histogram(c2(:,i), 'FaceAlpha', 0.5, 'FaceColor', 'g');
+  histogram(c2(:,i), 'FaceAlpha', 0.5, 'FaceColor', 'g', 'EdgeColor', 'none');
   hold on
-  histogram(c3(:,i), 'FaceAlpha', 0.5, 'FaceColor', 'y');
+  histogram(c3(:,i), 'FaceAlpha', 0.5, 'FaceColor', 'b', 'EdgeColor', 'none');
   hold off
 
   max_c1 = max(c1(:,i));
@@ -27,9 +27,12 @@ for i=1:dimension
   min_c3 = min(c3(:,i));
   minVal = min([min_c1, min_c2, min_c3]);
 
-  title(sprintf('Distribution of #%d Feature', i));
-  xlabel(sprintf('Value of #%d Feature', i));
-  ylabel(sprintf('Frequency of #%d Feature', i));
+  % set(gca, 'Color', [50 56 62] ./ 255);
+  % set(gca,'xcolor','w');
+  % set(gca,'ycolor','w');
+  title(sprintf('Distribution of #%d Feature', i), 'Color', 'k', 'FontWeight', 'normal');
+  xlabel(sprintf('Value of #%d Feature', i), 'Color', 'k', 'FontWeight', 'normal');
+  ylabel(sprintf('Frequency of #%d Feature', i), 'Color', 'k', 'FontWeight', 'normal');
   xlim([minVal - (abs(minVal) * .2), maxVal + (maxVal * .2)]);
   pause;
 end

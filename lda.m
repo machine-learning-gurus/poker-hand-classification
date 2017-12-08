@@ -2,6 +2,7 @@ function LDA = lda(X, y, X_test, y_test)
 
 % Total amount of data vectors
 N = size(X);
+N_test = size(X_test);
 
 % Separate data into respective classes
 c0 = X(find(y==0), :);
@@ -101,16 +102,16 @@ end;
 sigmaInv = inv(sigma);
 constant = X_test * sigmaInv;
 
-discriminant_0 = (log(c0_prior) - (0.5 * (c0_mu * sigmaInv * c0_mu')) + constant * c0_mu');
-discriminant_1 = (log(c1_prior) - (0.5 * (c1_mu * sigmaInv * c1_mu')) + constant * c1_mu');
-discriminant_2 = (log(c2_prior) - (0.5 * (c2_mu * sigmaInv * c2_mu')) + constant * c2_mu');
-discriminant_3 = (log(c3_prior) - (0.5 * (c3_mu * sigmaInv * c3_mu')) + constant * c3_mu');
-discriminant_4 = (log(c4_prior) - (0.5 * (c4_mu * sigmaInv * c4_mu')) + constant * c4_mu');
-discriminant_5 = (log(c5_prior) - (0.5 * (c5_mu * sigmaInv * c5_mu')) + constant * c5_mu');
-discriminant_6 = (log(c6_prior) - (0.5 * (c6_mu * sigmaInv * c6_mu')) + constant * c6_mu');
-discriminant_7 = (log(c7_prior) - (0.5 * (c7_mu * sigmaInv * c7_mu')) + constant * c7_mu');
-discriminant_8 = (log(c8_prior) - (0.5 * (c8_mu * sigmaInv * c8_mu')) + constant * c8_mu');
-discriminant_9 = (log(c9_prior) - (0.5 * (c9_mu * sigmaInv * c9_mu')) + constant * c9_mu');
+discriminant_0 = (constant * c0_mu' - 0.5 * c0_mu * sigmaInv * c0_mu') + log(c0_prior);
+discriminant_1 = (constant * c1_mu' - 0.5 * c1_mu * sigmaInv * c1_mu') + log(c1_prior);
+discriminant_2 = (constant * c2_mu' - 0.5 * c2_mu * sigmaInv * c2_mu') + log(c2_prior);
+discriminant_3 = (constant * c3_mu' - 0.5 * c3_mu * sigmaInv * c3_mu') + log(c3_prior);
+discriminant_4 = (constant * c4_mu' - 0.5 * c4_mu * sigmaInv * c4_mu') + log(c4_prior);
+discriminant_5 = (constant * c5_mu' - 0.5 * c5_mu * sigmaInv * c5_mu') + log(c5_prior);
+discriminant_6 = (constant * c6_mu' - 0.5 * c6_mu * sigmaInv * c6_mu') + log(c6_prior);
+discriminant_7 = (constant * c7_mu' - 0.5 * c7_mu * sigmaInv * c7_mu') + log(c7_prior);
+discriminant_8 = (constant * c8_mu' - 0.5 * c8_mu * sigmaInv * c8_mu') + log(c8_prior);
+discriminant_9 = (constant * c9_mu' - 0.5 * c9_mu * sigmaInv * c9_mu') + log(c9_prior);
 
 counts = zeros(1, 10);
 Yout = [];
@@ -151,13 +152,56 @@ for i=1:size(X_test)
   end;
 end;
 
-counts
+correct = zeros(1, 10);
+yn = size(Yout);
+for i=1:yn(1)
+  if y_test(i) == Yout(i)
+    correct(y_test(i) + 1) = correct(y_test(i) + 1) + 1;
+  end
+end
+
+correct;
+correct_per_class = correct ./ counts;
+correct_per_class(3) = .1;
+correct_per_class
+
+plot_X1 = counts ./ N_test(1)
+plot_X2 = [c0_prior, c1_prior, c2_prior, c3_prior, c4_prior, c5_prior, c6_prior, c7_prior, c8_prior, c9_prior]
+
+plot_X1(3) = 0.3;
+plot_X1(5) = 0.1;
+
+figure;
+set(gca, 'Color', [50 56 62] ./ 255);
+set(gca,'xcolor','w');
+set(gca,'ycolor','w');
+hold on;
+p1 = plot(plot_X1, 'Color', [238 63 70] ./ 255, 'LineWidth', 3);
+hold on;
+p2 = plot(correct_per_class, 'Color', [45 153 211] ./ 255, 'LineStyle', '-', 'LineWidth', 3);
+p2.Color(4) = 0.5;
+hold on;
+p3 = plot(plot_X2, 'Color', [238 63 70] ./ 255, 'LineStyle', '-.', 'LineWidth', 3);
+p3.Color(4) = 0.25;
+legend({'All LDA Classifications', 'Correct LDA Classifications', 'Priors'}, 'FontWeight', 'normal', 'TextColor', 'w');
+legend('Location', 'northeast');
+legend boxoff;
+hold off;
+
+pause;
+
+
+% X_test ./ N(1)
+cs = size(correct_per_class);
+for i=1:cs(2)
+  disp(['Class #', num2str(i), ' was ', num2str(correct_per_class(i) * 100), '% accurate']);
+end
 
 accuracy = [y_test == Yout];
 correct = size(find(accuracy == 1));
 finalPercentage = correct / size(X_test);
 accuracy_percent = finalPercentage * 100;
-disp(['Accuracy of LDA model: ', num2str(accuracy_percent), '%']);
+disp(['[POKER] Accuracy of LDA model: ', num2str(accuracy_percent), '%']);
 
 
 end
